@@ -1,19 +1,20 @@
 ## Assignment 2
-## Condition:- matrix supplied must always be invertible
+
 ## This function creates a special "matrix" object that can cache its inverse.
+## Pre-condition:- matrix supplied must always be invertible
 makeCacheMatrix <- function(x = matrix()) {
          m <- NULL
          set <- function(y) 
              {
                  x <<- y
-                 m <<- NULL
+                 m <<- NULL #sets Null to the ext environment m
              }
          get <- function() x
          setinverse <- function(solve) m <<- solve # Inverses the matrix
          getinverse <- function() m
          list(set = set, get = get,
                          setsolve = setinverse,
-                         getinverse = getinverse)
+                         getinverse = getinverse) #lists the environment
 }
 
 ##  cacheSolve : This function computes the inverse of the special "matrix" returned by  makeCacheMatrix  above. 
@@ -24,14 +25,13 @@ cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
          m <- x$getinverse()
          if(!is.null(m)) {
-                 message("getting cached data")
-                 return(m)
+                 message("getting cached data") 
+                 return(m) # retrieves the cache m
              }
          data <- x$get()
-         m <- solve(data, ...)
+         m <- solve(data, ...) #calculates the inverse matrix and assign to m
          x$setinverse(m)
          m
 
 }
-## Test scenario:-  m <- matrix(1:6, nrow = 2, ncol = 2)
-##
+## End
