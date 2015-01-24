@@ -1,6 +1,5 @@
-## Put comments here that give an overall description of what your
-## functions do
-
+## Assignment 2
+## Condition:- matrix supplied must always be invertible
 ## This function creates a special "matrix" object that can cache its inverse.
 makeCacheMatrix <- function(x = matrix()) {
          m <- NULL
@@ -10,7 +9,7 @@ makeCacheMatrix <- function(x = matrix()) {
                  m <<- NULL
              }
          get <- function() x
-         setinverse <- function(solve) m <<- solve
+         setinverse <- function(solve) m <<- solve # Inverses the matrix
          getinverse <- function() m
          list(set = set, get = get,
                          setsolve = setinverse,
@@ -32,5 +31,7 @@ cacheSolve <- function(x, ...) {
          m <- solve(data, ...)
          x$setinverse(m)
          m
-## Test scenario:-  m <- matrix(1:6, nrow = 2, ncol = 2)
+
 }
+## Test scenario:-  m <- matrix(1:6, nrow = 2, ncol = 2)
+##
